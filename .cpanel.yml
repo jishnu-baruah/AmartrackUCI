@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/drshm7ei8358/public_html/uci/
+    - mkdir -p $DEPLOYPATH
+    - /bin/rm -rf $DEPLOYPATH/*
+    - /bin/cp /home/drshm7ei8358/repositories/AmartrackUCI/amartrack_project1.html $DEPLOYPATH/index.html

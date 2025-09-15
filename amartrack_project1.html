@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unified Careers Inf</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@3.4.17"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Font Awesome for Student Dashboard Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="flex flex-col min-h-screen bg-white">
+
+  <!-- Header -->
+  <header class="w-full flex justify-end items-center p-4 bg-white shadow">
+    <img src="images/logo.png" alt="Logo" class="h-20 w-auto">
+  </header>
+
+  <!-- Step 1: UCID Input -->
+  <div id="step1" class="text-center w-full max-w-md p-6 mx-auto">
+    <h1 class="text-2xl font-semibold text-gray-800 mb-8">Unified Career Infrastructure</h1>
+    
+    <div class="flex items-center border rounded-lg shadow overflow-hidden w-full relative">
+      <input 
+        id="ucidInput"
+        type="text" 
+        placeholder="Enter your UCI ID" 
+        class="flex-grow px-4 py-2 focus:outline-none text-gray-700"
+      />
+      <button 
+        onclick="checkUCID()" 
+        class="bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition">
+        ➝
+      </button>
+    </div>
+
+    <div class="flex justify-end mt-2">
+      <button
+        onclick="signup()" 
+        class="bg-white text-black text-xs px-4 py-1 rounded hover:bg-gray-100 transition">
+        Sign Up
+      </button>
+    </div>
+
+    <p id="errorMsg" class="text-red-500 text-sm mt-3 hidden"></p>
+  </div>
+
+  <!-- Step 2: Password Input -->
+  <div id="step2" class="hidden text-center w-full max-w-md p-6 mx-auto">
+    <h2 class="text-xl font-semibold text-gray-800 mb-6">Unified Career Infrastructure</h2>
+
+    <div class="flex items-center border rounded-lg shadow overflow-hidden w-full relative">
+      <input 
+        id="passwordInput"
+        type="password" 
+        placeholder="Enter your password" 
+        class="flex-grow px-4 py-2 focus:outline-none text-gray-700"
+      />
+      <button 
+        onclick="checkPassword()" 
+        class="bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition">
+        ➝
+      </button>
+    </div>
+    <p id="passwordErrorMsg" class="text-red-500 text-sm mt-3 hidden"></p>
+  </div>
+<!-- Step 2.1 -->
+  <div id="step2.1" class="hidden text-center w-full max-w-md p-6 mx-auto">
+    <h2 class="text-xl font-semibold text-gray-800 mb-6">Choose your category</h2>
+    
+    <form class="space-y-4 text-left">
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" name="category" id="category1" onClick="ckChange(this)" class="w-4 h-4 text-blue-600" />
+        <span>Individual</span>
+      </label>
+      
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" name="category" id="category2" onClick="ckChange(this)" class="w-4 h-4 text-blue-600" />
+        <span>Institution</span>
+      </label>
+      
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" name="category" id="category3" onClick="ckChange(this)" class="w-4 h-4 text-blue-600" />
+        <span>Enterprise</span>
+      </label>
+      
+      <button class="mt-6 w-full bg-white-600 text-black py-2 rounded-lg hover:bg-white-700">
+        Continue
+      </button>
+    </form>
+  </div>
+  <!-- Step 3: Stakeholder Page -->
+  <div id="step3" class="hidden text-center w-full max-w-md p-6 mx-auto">
+    <h2 class="text-xl font-semibold text-gray-800 mb-6">Stakeholder Page</h2>
+    
+    <form class="space-y-4 text-left">
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" name="stakeholder" onClick="ckChange(this)" class="w-4 h-4 text-blue-600" />
+        <span>Student/Career</span>
+      </label>
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" name="stakeholder" onClick="ckChange(this)" class="w-4 h-4 text-blue-600" />
+        <span>Parents/Guardian</span>
+      </label>
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" name="stakeholder" onClick="ckChange(this)" class="w-4 h-4 text-blue-600" />
+        <span>Teachers/Faculty</span>
+      </label>
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" name="stakeholder" onClick="ckChange(this)" class="w-4 h-4 text-blue-600" />
+        <span>Staff</span>
+      </label>
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" name="stakeholder" onClick="ckChange(this)" class="w-4 h-4 text-blue-600" />
+        <span>Vendor</span>
+      </label>
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" name="stakeholder" onClick="ckChange(this)" class="w-4 h-4 text-blue-600" />
+        <span>Institution Management</span>
+      </label>
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" name="stakeholder" onClick="ckChange(this)" class="w-4 h-4 text-blue-600" />
+        <span>Government</span>
+      </label>
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" name="stakeholder" onClick="ckChange(this)" class="w-4 h-4 text-blue-600" />
+        <span>Industry (HRMS)</span>
+      </label>
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" name="stakeholder" onClick="ckChange(this)" class="w-4 h-4 text-blue-600" />
+        <span>U-Store</span>
+      </label>
+      <button 
+        type="button"
+        onclick="goToStep4()" 
+        class="mt-6 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+        Continue
+      </button>
+    </form>
+  </div>
+
+  <!-- Step 4: Institution Management Dashboard -->
+  <div id="step4" class="hidden flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 min-h-screen bg-gradient-to-b from-blue-800 to-blue-900 text-white flex flex-col shadow-lg">
+      <div class="p-6 flex items-center justify-center border-b border-blue-700">
+        <h2 class="text-xl font-bold">IM Dashboard</h2>
+      </div>
+      <nav class="flex-1 p-4 space-y-2">
+        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+          <span class="material-icons mr-3">people</span> HR
+        </a>
+        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition" onclick="goToStep5()" >
+          <span class="material-icons mr-3">school</span> Admission
+        </a>
+        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+          <span class="material-icons mr-3">directions_bus</span> Bus
+        </a>
+        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700">
+          <span class="material-icons mr-3">attach_money</span> Fee
+        </a>
+        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+          <span class="material-icons mr-3">security</span> Security
+        </a>
+        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+          <span class="material-icons mr-3">menu_book</span> Academics
+        </a>
+        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition" onclick="goToStep6()">
+          <span class="material-icons mr-3">assignment</span> Examination
+        </a>
+        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+          <span class="material-icons mr-3">local_library</span> Library
+        </a>
+        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+          <span class="material-icons mr-3">book</span> Curriculum
+        </a>
+        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+          <span class="material-icons mr-3">schedule</span> Time Table
+        </a>
+        <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+          <span class="material-icons mr-3">email</span> Message
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main IM Dashboard -->
+    <div id="step4.1" class="hidden flex min-h-screen">
+      <main class="flex-1 p-8 bg-gray-50">
+        <h1 class="text-3xl font-bold text-blue-800 mb-6">Institution Management Dashboard</h1>
+
+        <!-- Info Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">Students</h3>
+            <p class="text-gray-600 text-sm">View enrollment, attendance, and performance analytics.</p>
+          </div>
+          <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">Faculty</h3>
+            <p class="text-gray-600 text-sm">Manage teachers, workloads, and training programs.</p>
+          </div>
+          <div class="bg-white rounded-2xl shadow p-6 hover:shadow-lg transition">
+            <h3 class="text-lg font-semibold text-gray-800 mb-2">Finance</h3>
+            <p class="text-gray-600 text-sm">Track budgets, expenses, and financial reports.</p>
+          </div>
+        </div>
+
+        <!-- Chart Placeholder -->
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Analytics Overview</h3>
+          <div class="h-64 flex items-center justify-center text-gray-400">
+           Chart/Graph placeholder
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Step 5: Student Management Dashboard -->
+    <div id="step5" class="hidden  w-full min-h-screen">
+      <main class="w-full p-8 bg-gray-50 min-h-screen">
+        <h1 class="text-3xl font-bold text-blue-800 mb-6">Student Management Dashboard</h1>
+
+        <!-- Full Student Dashboard Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Card 1 -->
+          <div class="bg-blue-600 text-white rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 flex items-center justify-between">
+              <i class="fa fa-users text-4xl"></i>
+              <div class="text-right">
+                <div class="text-2xl font-bold">12</div>
+                <div class="text-sm">Existing <br> Students !</div>
+              </div>
+            </div>
+            <div class="bg-white text-blue-600 flex justify-between items-center px-4 py-2">
+              <a href="#" class="font-medium hover:underline">View Details</a>
+              <i class="fa fa-arrow-circle-right"></i>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-red-600 text-white rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 flex items-center justify-between">
+              <i class="fa fa-users text-4xl"></i>
+              <div class="text-right">
+                <div class="text-2xl font-bold">0</div>
+                <div class="text-sm">Admission <br> Current Month !</div>
+              </div>
+            </div>
+            <div class="bg-white text-red-600 flex justify-between items-center px-4 py-2">
+              <a href="#" class="font-medium hover:underline">View Details</a>
+              <i class="fa fa-arrow-circle-right"></i>
+            </div>
+          </div>
+            
+        </div>
+          
+      </main>
+    </div>
+    <!-- Step 6-->
+     <div id="step6" class="hidden w-full min-h-screen">
+      <main class="w-full p-8 bg-gray-50 min-h-screen">
+        <h1 class="text-3xl font-bold text-blue-800 mb-6">Exam Management Dashboard</h1>
+
+        <!-- Full Student Dashboard Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+         
+          <!-- Card 3 -->
+          <div class="bg-green-600 text-white rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 flex items-center justify-between">
+              <i class="fa fa-server text-4xl"></i>
+              <div class="text-right">
+                <div class="text-2xl font-bold">1/10</div>
+                <div class="text-sm">Upcoming <br>&nbsp;Exams ! </div>
+              </div>
+            </div>
+            <div class="bg-white text-green-600 flex justify-between items-center px-4 py-2">
+              <a href="#" class="font-medium hover:underline">View Details</a>
+              <i class="fa fa-arrow-circle-right"></i>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bg-blue-500 text-white rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 flex items-center justify-between">
+              <i class="fa fa-users text-4xl"></i>
+              <div class="text-right">
+                <div class="text-2xl font-bold">1</div>
+                <div class="text-sm">Exam Today! <br>&nbsp;</div>
+              </div>
+            </div>
+            <div class="bg-white text-blue-600 flex justify-between items-center px-4 py-2">
+              <a href="#" class="font-medium hover:underline">View Details</a>
+              <i class="fa fa-arrow-circle-right"></i>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="bg-red-500 text-white rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 flex items-center justify-between">
+              <i class="fa fa-lock text-4xl"></i>
+              <div class="text-right">
+                <div class="text-2xl font-bold">0</div>
+                <div class="text-sm">Exam <br> Not Attended !</div>
+              </div>
+            </div>
+            <div class="bg-white text-red-600 flex justify-between items-center px-4 py-2">
+              <a href="#" class="font-medium hover:underline">View Details</a>
+              <i class="fa fa-arrow-circle-right"></i>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="bg-green-500 text-white rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 flex items-center justify-between">
+              <i class="fa fa-lock text-4xl"></i>
+              <div class="text-right">
+                <div class="text-2xl font-bold">0</div>
+                <div class="text-sm">Exam <br>&nbsp;Completed ! </div>
+              </div>
+            </div>
+            <div class="bg-white text-green-600 flex justify-between items-center px-4 py-2">
+              <a href="#" class="font-medium hover:underline">View Details</a>
+              <i class="fa fa-arrow-circle-right"></i>
+            </div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="bg-blue-600 text-white rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 flex items-center justify-between">
+              <i class="fa fa-lock text-4xl"></i>
+              <div class="text-right">
+                <div class="text-2xl font-bold">0</div>
+                <div class="text-sm">Exam Completed <br> Report !</div>
+              </div>
+            </div>
+            <div class="bg-white text-blue-600 flex justify-between items-center px-4 py-2">
+              <a href="#" class="font-medium hover:underline">View Details</a>
+              <i class="fa fa-arrow-circle-right"></i>
+            </div>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="bg-yellow-500 text-white rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 flex items-center justify-between">
+              <i class="fa fa-lock text-4xl"></i>
+              <div class="text-right">
+                <div class="text-2xl font-bold">0</div>
+                <div class="text-sm">Exam <br> Not Completed !</div>
+              </div>
+            </div>
+            <div class="bg-white text-yellow-600 flex justify-between items-center px-4 py-2">
+              <a href="#" class="font-medium hover:underline">View Details</a>
+              <i class="fa fa-arrow-circle-right"></i>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-auto w-full flex justify-center px-6 py-4 bg-gray-200">
+    <div class="flex items-center space-x-2 text-sm" id="br" class="hidden">
+      <button onclick="openModal()" class="text-blue-900 hover:underline">Contact Info</button>
+      <span class="text-gray-400">|</span>
+      <a href="pdf/AMARTRACK.pdf" class="text-blue-900 hover:underline"  >Brochure</a>
+    </div>
+  </footer>
+
+  <!-- Contact Modal -->
+  <div id="contactModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="bg-white rounded-xl shadow-lg p-6 w-96 relative">
+      <h3 class="text-lg font-semibold mb-4">Contact Details</h3>
+      <img src="images/address.jpg" alt="Address">
+      <button onclick="closeModal()" class="absolute top-2 right-2 text-gray-500 hover:text-black">✕</button>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function checkUCID() {
+      const ucid = document.getElementById("ucidInput").value.trim();
+      const errorMsg = document.getElementById("errorMsg");
+      const regex = /^UCI-(\d{4}[-]){2}\d{5}$/;
+        
+      if (regex.test(ucid)) {
+        errorMsg.classList.add("hidden");
+        document.getElementById('step1').classList.add('hidden');
+        document.getElementById('br').classList.add('hidden');
+        document.getElementById('step2').classList.remove('hidden');
+      } else {
+        errorMsg.textContent = "Invalid UCID. Format: UCI-1234-1234-12345";
+        errorMsg.classList.remove("hidden");
+      }
+    }
+
+    function checkPassword() {
+      const password = document.getElementById("passwordInput").value.trim();
+      const error = document.getElementById("passwordErrorMsg");
+
+      if (password.length >= 6) {
+        error.classList.add("hidden");
+        document.getElementById("step2").classList.add("hidden");
+        document.getElementById("step3").classList.remove("hidden");
+      } else {
+        error.textContent = "Password must be at least 6 characters.";
+        error.classList.remove("hidden");
+      }
+    }
+
+    function signup() {
+      document.getElementById('step1').classList.add('hidden');
+      document.getElementById('step2.1').classList.remove('hidden');
+      document.getElementById('br').classList.add('hidden');
+    }
+
+    function openModal() {
+      document.getElementById('contactModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('contactModal').classList.add('hidden');
+    }
+
+    function ckChange(ckType) {
+      const checkboxes = document.getElementsByName(ckType.name);
+      const isChecked = ckType.checked;
+
+      checkboxes.forEach(cb => {
+      const label = cb.parentElement;   // label element
+      const text = label.querySelector("span");
+
+      if (!cb.checked) {
+        cb.disabled = isChecked;        // disable others
+        if (isChecked) {
+          text.classList.add("opacity-50"); // dim text
+        } else {
+          text.classList.remove("opacity-50");
+        }
+      } else {
+        cb.disabled = false;            // keep selected active
+        text.classList.remove("opacity-50"); // keep selected bright
+      }
+    });
+  }
+
+    function goToStep4() {
+      const selected = document.querySelector("input[name='stakeholder']:checked");
+      if (!selected) return;
+
+      document.getElementById("step3").classList.add("hidden");
+
+      if (selected.nextElementSibling.textContent.trim() === "Institution Management") {
+        document.getElementById("step4").classList.remove("hidden");
+        document.getElementById("step4.1").classList.remove("hidden");
+      } else {
+
+        alert("Other stakeholder pages coming soon!");
+         document.getElementById("step3").classList.remove("hidden");
+      }
+    }
+
+    function goToStep5() {
+      const selected = document.querySelector("input[name='stakeholder']:checked");
+      if (!selected) return;
+
+      document.getElementById("step4.1").classList.add("hidden");
+        document.getElementById("step6").classList.add("hidden");
+      document.getElementById("step5").classList.remove("hidden");
+    }
+    function goToStep6() {
+      const selected = document.querySelector("input[name='stakeholder']:checked");
+      if (!selected) return;
+
+      document.getElementById("step4.1").classList.add("hidden");
+      document.getElementById("step5").classList.add("hidden");
+      document.getElementById("step6").classList.remove("hidden");
+    }
+    //to active
+    const links = document.querySelectorAll(".nav-link");
+
+  links.forEach(link => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault(); // prevent jumping to top
+
+      // remove active class from all
+      links.forEach(l => l.classList.remove("bg-blue-700", "text-white"));
+
+      // add active class to clicked one
+      this.classList.add("bg-blue-700", "text-white");
+    });
+  });
+  
+</script>
+  </script>
+
+</body>
+</html>
